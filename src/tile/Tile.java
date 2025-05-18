@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
  */
 public class Tile {
    public BufferedImage image;
-   public boolean collision = false; 
+   public boolean collision = false; // it means if the collision is false the player can move around with it and if it is collision true then it has
+                                     // collision it means there the detection you cannot go there
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48); // Adjust size if needed
 }

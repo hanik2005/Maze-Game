@@ -23,12 +23,17 @@ public class EnvironmentManager {
     }
     public void setup(){
        
+            fog = new Fog(gp, 700);
         
-        lighting = new Lighting(gp, 576); //350 is the current number
-       // fog = new Fog(gp, 700);
+            lighting = new Lighting(gp, 150); //350 is the current number 576
+        
     }
     public void draw(Graphics2D g2){
-        lighting.draw(g2);
-        //fog.draw(g2);
+         if(gp.environmentState == gp.fogState){
+            fog.draw(g2);
+        }
+        if(gp.environmentState == gp.lightingState){
+            lighting.draw(g2);
+        }
     }
 }

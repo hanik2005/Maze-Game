@@ -4,6 +4,7 @@
  */
 package main;
 
+import entity.Entity;
 import entity.Player;
 import environment.EnvironmentManager;
 import java.awt.Color;
@@ -14,12 +15,13 @@ import java.awt.Graphics2D;
 import java.util.List;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import object.SuperObject;
 import tile.TileManager;
 
 /**
@@ -29,9 +31,6 @@ import tile.TileManager;
 public class GamePanel extends JPanel implements Runnable{ // inherits jPanel and to run a thread we must implement the runnable
     
     //DIFFERENT
-    Font arial_40, arial_80B;
-    public double playTime;
-    public DecimalFormat dFormat = new DecimalFormat("#0.00");
     
     //SCREEN SETTINGS
     
@@ -46,8 +45,8 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
     
     
     //WORLD SETTINGS
-    public final int maxWorldCol = 100; //50 original col
-    public final int maxWorldRow = 100; // 50 original row
+    public int maxWorldCol = 100; //50 original col
+    public int maxWorldRow = 100; // 50 original row
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
     
@@ -70,38 +69,57 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
     //ENVIRONMENT
     public boolean eManagerActive = false;
     
+    //ENVIRONMENT STATE
+    public int environmentState;
+    public final int fogState = 0;
+    public final int lightingState = 1;
+    
     
     //ENTITY AND OBJECT
-    public Player player = new Player(this, keyH);
-    public SuperObject obj[] = new SuperObject[100];
+    public Player player = new Player(this, keyH, ui);
+    public Entity npc[] = new Entity[11];
+    public Entity monster[] = new Entity[20];
+    public Entity obj[] = new Entity[100];
+    ArrayList<Entity> entityList = new ArrayList<>();
+    
     
     //GAME STATE
-    
+    // DIFFERENT STATE SCREEN
     public int gameState;
     public final int titleState = 0;
     public final int playState = 1;
     public final int pauseState = 2;
-    public final int gameOverState = 3;
+    public final int gameMenuState = 3;
     public final int instructionState = 4;
     public final int nameState = 5;
     public final int leaderboardState = 6;
-    public final int gameFinished = 7;
+    public final int gameFinishedState = 7;
+    public final int gameOverState = 8;
+    public final int gameLevelsState = 9;
+    public final int dialogueState = 10;
+    public final int playerStatusState = 11;
+    
     
     //NAME OF PLAYER
+    // STORE PLAYER INFORMATION 
     
      public String playerName = "";
-     
-     
-     // STORE PLAYER
-     
      public List<String> leaderboardData = new ArrayList<>();
     
-    
+     //LEVELS STATE
+     public int LevelState;
+     public final int Levels_1 = 0;
+     public final int Levels_2 = 1;
+     public final int Levels_3 = 2;
+     public final int Levels_4 = 3;
+     public final int Levels_5 = 4;
+     public final int Levels_6 = 5;
+     public final int tutorial_level = 6;
     
     public GamePanel(){
         
         this.setPreferredSize(new Dimension(screenWidth, screenHeight)); // set size of the jpanel
-        this.setBackground(Color.black);
+        this.setBackground(Color.black); // default
         this.setDoubleBuffered(true); // improve rendering performance
         this.addKeyListener(keyH); // this gamepanel can recognize keyInputs
         this.setFocusable(true);// this gamePanel can be focused to recieve keyInputs
@@ -109,13 +127,48 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
         
     }
     public void setupGame(){
-        aSetter.setObject();
-        //playMusic(0);
-        //gameState = playState;
-        eManager.setup();
-        eManagerActive = true;
+        System.out.println("Debug: "+ LevelState);
+        
+        //Set the State
         gameState = titleState;
-        playMusic(0);
+        
+        //SET ENVIRONMENT MANAGER
+        eManager.setup();
+        
+        //Debugging State
+        // gameState = gameLevelsState;
+         playMusic(0);
+    }
+    public void setMap(){
+        switch (LevelState) {
+            case Levels_1:
+                aSetter.setObject_1();
+                aSetter.setNpc();
+                aSetter.setEnemy();
+                eManagerActive = false;
+                environmentState = fogState;
+                break;
+            case Levels_2:
+                aSetter.setObject_2();
+                eManagerActive = true;
+                environmentState = lightingState;
+                break;
+            case Levels_3:
+                aSetter.setObject_2();
+                eManagerActive = true;
+                break;
+            case Levels_4:
+                break;
+            case Levels_5:
+                break;
+            case Levels_6:
+                break;
+            case tutorial_level:
+                aSetter.setNpc();
+                break;
+        }
+    
+    
     }
     
     public void startGameThread(){ // here is the method of the startGameThread
@@ -129,7 +182,6 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
                          //running the program until the user stop it.
                         // when we start this Thread it automitically called the run method so we create a method in the gamepanel 
                         //class called startGameThread
-        
                         
                         
         //THIS IS THE DELTA OR ACCUMULATOR METHOD ALGORITHM
@@ -166,7 +218,27 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
     }
     public void update(){
       if(gameState == playState){
+        //PLAYER UPDATE MOVEMENT
         player.update();
+        //NPC UPDATE MOVEMENT
+        for(int i = 0; i < npc.length; i++){
+            if(npc[i] != null){
+                npc[i].update();
+            }
+        
+        }
+        //MONSTER UPDATE MOVEMENT
+        for(int i = 0; i < monster.length; i++){
+            if(monster[i] != null){
+               if(monster[i].alive == true && monster[i].dying == false){
+                   monster[i].update();
+               }
+               if(monster[i].alive == false){
+                   monster[i] = null;
+               }
+            }
+        
+        }
       }
       if(gameState == pauseState){
         
@@ -186,20 +258,62 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
             drawStart = System.nanoTime();
         }
         
+        if(gameState == titleState){
+            ui.draw(g2);
+        
+        }else{
         
         
         //TILES
         tileM.draw(g2);
         
-        //OBJECT
-        for(int i = 0; i < obj.length; i++){
-            if(obj[i] != null){
-                obj[i].draw(g2, this);
+        
+        //ADD ENTITIES TO THE LIST OR WHAT WE CALL ARRAYLIST
+        //PLAYER
+        entityList.add(player);
+        
+        //NPC
+        for(int i = 0; i<npc.length; i++){
+            if(npc[i] != null){
+                entityList.add(npc[i]);
             }
         }
         
-        //PLAYER
-        player.draw(g2);
+        //MONSTER
+        for(int i = 0; i<monster.length; i++){
+            if(monster[i] != null){
+                entityList.add(monster[i]);
+            }
+        }
+        
+        //OBJECT
+        for(int i = 0; i < obj.length; i++){
+             if(obj[i] != null){
+                 entityList.add(obj[i]);
+             }
+        }
+        
+        //SORT THE LIST
+        Collections.sort(entityList, new Comparator<Entity>() {
+            @Override
+            public int compare(Entity e1, Entity e2) {
+                int result = Integer.compare(e1.worldY, e2.worldY);
+                return result;
+            }
+        });
+        
+        //DRAW ENTITIES
+        for(int i = 0; i < entityList.size(); i++){
+            entityList.get(i).draw(g2);
+        
+        }
+        //EMPTY ENTITY LIST
+         entityList.clear();
+        
+        
+        
+        
+        
         
         
         //ENVIRONMENT
@@ -227,13 +341,22 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
             System.out.println("Draw Time: " + passed);
         }
         g2.dispose(); // dispose of this graphics context and release any system resources that it is using
-    
+        }
     }
-    public void resetObject(){
-        aSetter.makeAllBananaDisappearAcrossAllMaps();
-        aSetter.makeAllBootsDisappearAcrossAllMaps();
-        aSetter.makeAllCoinDisappearAcrossAllMaps();
-        aSetter.setObject();
+    //problem
+    public void reset(){
+        //REMOVE OBJECTS
+         for (int i = 0; i < obj.length; i++) {
+            obj[i] = null;
+        }
+        //RESET NPCS 
+         for(int i = 0; i<npc.length; i++){
+             npc[i] = null;
+         }
+         
+         // RESET MAP
+         //tileM.resetMap();
+    
     
     }
     public void playMusic(int i){
@@ -248,13 +371,6 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
     public void PlaySE(int i){
         se.setFile(i);
         se.play();
-    }
-    public void closeFrame() {
-        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        frame.dispose();
-    }
-    public void startNew() {
-        Main.runTheProgram();
     }
     
 }

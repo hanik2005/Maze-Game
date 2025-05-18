@@ -3,7 +3,35 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Made%20Game%20by%20Nick/MAZE_GAME/src/main/Main.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/main/GamePanel.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/main/UI.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/object/OBJ_Heart.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/entity/Player.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/entity/Entity.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/main/KeyHandler.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/tile/Tile.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/tile/TileManager.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/environment/EnvironmentManager.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/environment/Lighting.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/environment/Fog.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/main/EventHandler.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/main/CollisionChecker.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/main/EventRect.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/object/OBJ_Traps.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/object/OBJ_QuestionMark.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/object/OBJ_MagicalDoor.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/object/OBJ_LastPortal.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/object/OBJ_Darkness.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/object/OBJ_Coin.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/object/OBJ_Brightness.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/object/OBJ_Boots.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/object/OBJ_Banana.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/entity/NPC_Slime.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/main/Sound.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/main/AssetSetter.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/monster/MON_Robot.java</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/player/Main_front_new_2.png</file>
+            <file>file:/H:/Made%20Game%20by%20Nick/MAZE_GAME/src/player/Main_front_new_1.png</file>
         </group>
     </open-files>
 </project-private>

@@ -4,6 +4,7 @@
  */
 package object;
 
+import entity.Entity;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import main.GamePanel;
@@ -12,21 +13,13 @@ import main.GamePanel;
  *
  * @author kring
  */
-public class OBJ_LastPortal extends SuperObject {
-    
-    GamePanel gp;
+public class OBJ_LastPortal extends Entity {
+   
     
     public OBJ_LastPortal(GamePanel gp){
+        super(gp);
+        name = "lastPortal";
+        down1 = setup("/objects/LastPortal", gp.tileSize, gp.tileSize);
         
-        this.gp = gp;
-        
-     name = "lastPortal";
-        try{
-           image = ImageIO.read(getClass().getResourceAsStream("/objects/LastPortal.png"));
-           uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-        }catch(IOException e){
-            e.printStackTrace();
-    }
-    
     }
 }

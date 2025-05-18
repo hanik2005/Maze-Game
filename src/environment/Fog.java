@@ -29,8 +29,8 @@ public class Fog {
         float fraction[] = new float[8];
 
         // Define color and opacity (increased opacity for heavier fog)
-        color[0] = new Color(200, 200, 200, 200); //20  // Very light fog
-        color[1] = new Color(180, 180, 180, 220); //40  // Light fog
+        color[0] = new Color(200, 200, 200, 100); //20  // Very light fog 200
+        color[1] = new Color(180, 180, 180, 120); //40  // Light fog    220
         color[2] = new Color(160, 160, 160, 240);  //60 // Moderate fog
         color[3] = new Color(140, 140, 140, 255); //80  // Thick fog
         color[4] = new Color(120, 120, 120, 255); //100 // Denser fog

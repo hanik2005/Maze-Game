@@ -5,6 +5,7 @@
  */
 package object;
 
+import entity.Entity;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import main.GamePanel;
@@ -13,18 +14,13 @@ import main.GamePanel;
  *
  * @author Student
  */
-public class OBJ_Traps extends SuperObject {
-    GamePanel gp;
+public class OBJ_Traps extends Entity {
+    
     
     public OBJ_Traps(GamePanel gp){
-        this.gp = gp;
-     name = "Traps";
-        try{
-           image = ImageIO.read(getClass().getResourceAsStream("/objects/Traps.png"));
-           uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-        }catch(IOException e){
-            e.printStackTrace();
-    }
+        super(gp);
+        name = "Traps";
+        down1 = setup("/objects/Traps", gp.tileSize, gp.tileSize);
     
     }
 }

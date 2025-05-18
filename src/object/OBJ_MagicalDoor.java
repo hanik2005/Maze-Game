@@ -4,6 +4,7 @@
  */
 package object;
 
+import entity.Entity;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import main.GamePanel;
@@ -12,21 +13,20 @@ import main.GamePanel;
  *
  * @author kring
  */
-public class OBJ_MagicalDoor extends SuperObject {
-     GamePanel gp;
+public class OBJ_MagicalDoor extends Entity {
     
     public OBJ_MagicalDoor(GamePanel gp){
-        
-        this.gp = gp;
-        
-     name = "magicalDoor";
-        try{
-           image = ImageIO.read(getClass().getResourceAsStream("/objects/MagicalDoor.png"));
-           uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-        }catch(IOException e){
-            e.printStackTrace();
-    }
+        super(gp);
+        name = "magicalDoor";
+        down1 = setup("/objects/MagicalDoor", gp.tileSize, gp.tileSize);
         collision = true;
+        
+        solidArea.x = 0;
+        solidArea.y = 16;
+        solidArea.width = 48;
+        solidArea.height = 32;
+        solidAreaDefaultX =  solidArea.x;
+        solidAreaDefaultY =  solidArea.y;
     
     }
 }

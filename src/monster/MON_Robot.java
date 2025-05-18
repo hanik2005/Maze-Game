@@ -1,0 +1,86 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package monster;
+
+import entity.Entity;
+import java.awt.Rectangle;
+import java.util.Random;
+import main.GamePanel;
+
+/**
+ *
+ * @author Nick Charles Clarito
+ */
+public class MON_Robot extends Entity {
+    
+    GamePanel gp;
+    
+    public MON_Robot(GamePanel gp) {
+        super(gp);
+        this.gp = gp;
+        
+        type = 2;
+        name = "Robot";
+        speed = 2;
+        maxLife = 4;
+        life = maxLife;
+        
+        //COLLISIONS
+        solidArea.x = 8; // 8
+        solidArea.y = 8; //8
+        solidArea.width = 28; //28
+        solidArea.height = 32;//32
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+        
+        getImage();
+    }
+    public void getImage(){
+        up1 = setup("/enemy/robot_up_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/enemy/robot_up_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/enemy/robot_Front_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/enemy/robot_Front_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/enemy/robot_left_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/enemy/robot_left_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/enemy/robot_right_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/enemy/robot_right_2", gp.tileSize, gp.tileSize);
+    
+    }
+    public void setAction(){
+        actionLockCounter ++;
+        
+        if(actionLockCounter == 120){
+            Random random = new Random();
+            int i = random.nextInt(100) + 1; // pick up a number 1 to 100
+        
+            if(i <= 25){
+                direction = "up";
+        
+            }
+            if(i > 25 && i <= 50){
+                direction = "down";
+        
+            }
+            if(i > 50 && i <= 75){
+                direction = "left";
+        
+            }
+            if(i > 75 && i<=100){
+                direction = "right";
+        
+            }
+             
+             
+             
+            actionLockCounter = 0;
+        }
+    
+    }
+    public void damageReaction(){
+        actionLockCounter = 0;
+        direction = gp.player.direction;
+    }
+    
+}

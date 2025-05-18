@@ -4,6 +4,7 @@
  */
 package object;
 
+import entity.Entity;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import main.GamePanel;
@@ -12,18 +13,16 @@ import main.GamePanel;
  *
  * @author kring
  */
-public class OBJ_Banana extends SuperObject {
-     GamePanel gp;
+public class OBJ_Banana extends Entity{
     
      public OBJ_Banana(GamePanel gp){
-         this.gp = gp;
-     name = "Banana";
-        try{
-           image = ImageIO.read(getClass().getResourceAsStream("/objects/banana.png"));
-           uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-        }catch(IOException e){
-            e.printStackTrace();
-    }
+         super(gp);
+         
+        name = "Banana";
+        
+        down1 = setup("/objects/banana", gp.tileSize, gp.tileSize);
+        
+       
     
     }
 }

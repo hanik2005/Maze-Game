@@ -4,6 +4,7 @@
  */
 package object;
 
+import entity.Entity;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import main.GamePanel;
@@ -12,18 +13,13 @@ import main.GamePanel;
  *
  * @author kring
  */
-public class OBJ_Darkness extends SuperObject {
-    GamePanel gp;
+public class OBJ_Darkness extends Entity {
     
     public OBJ_Darkness(GamePanel gp){
-        this.gp = gp;
+        super(gp);
         name = "Sight";
-        try{
-           image = ImageIO.read(getClass().getResourceAsStream("/objects/Blindness.png"));
-           uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-        }catch(IOException e){
-            e.printStackTrace();
-    }
+        down1 = setup("/objects/Blindness", gp.tileSize, gp.tileSize);
+        
     
     }
 }

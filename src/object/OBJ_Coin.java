@@ -4,6 +4,7 @@
  */
 package object;
 
+import entity.Entity;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import main.GamePanel;
@@ -12,18 +13,14 @@ import main.GamePanel;
  *
  * @author kring
  */
-public class OBJ_Coin extends SuperObject{
-    GamePanel gp;
+public class OBJ_Coin extends Entity{
     
     public OBJ_Coin(GamePanel gp){
-        this.gp = gp;
-     name = "Coin";
-        try{
-           image = ImageIO.read(getClass().getResourceAsStream("/objects/coin_new.png"));
-           uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-        }catch(IOException e){
-            e.printStackTrace();
-    }
+        super(gp);
+        name = "Coin";
+        down1 = setup("/objects/coin_new", gp.tileSize, gp.tileSize);
+        image = setup("/objects/coin_new", gp.tileSize, gp.tileSize);
+       
     
     }
 }
