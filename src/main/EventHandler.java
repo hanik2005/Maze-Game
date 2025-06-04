@@ -125,6 +125,7 @@ public class EventHandler {
             gp.ui.currentDialogue = "HAAAAA!";
             gp.player.life = gp.player.maxLife;
             eventRect[col][row].eventDone = true;
+            //gp.aSetter.setEnemy(); //only use this if you heal the monster respawn
         }
     }
 }

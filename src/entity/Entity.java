@@ -27,6 +27,9 @@ public class Entity {
     //ENTITY ATTACK MOVEMENT
     public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, 
             attackLeft1, attackLeft2, attackRight1, attackRight2;
+
+    //EXTRA
+    public BufferedImage attackUp3, attackDown3, attackLeft3, attackRight3;
     
     //DEFAULT DIRECTION OF ENTITY
     public String direction = "down";
@@ -54,14 +57,16 @@ public class Entity {
     public int dialogueIndex = 0;
     public int dyingCounter = 0;
     public int hpBarCounter = 0;
+    public int shotAvailableCounter = 0;
     
     
     //CHARACTER STATUS OR ATTRIBUTES
     public int maxLife;
     public int life;
+    public int maxMana;
+    public int mana;
     public int strength;
     public int speed;
-    public int type; // type 2 is monster 
     public String name;
     public int level; //DEPENDS OF ME
     public int dexterity;
@@ -72,10 +77,24 @@ public class Entity {
     public int coin;
     public Entity currentWeapon;
     public Entity currentShield;
+    public Projectile projectile;
     
     //ITEMS ATRIBUTES
     public int attackValue;
     public int defenseValue;
+    public String description = "";
+    public int useCost;
+
+    //TYPES
+    public int type; // type 0 is player, type 1 is npc, and type 2 is monster
+    public final int type_player = 0;
+    public final int type_npc = 1;
+    public final int type_monster = 2;
+    public final int type_sword = 3;
+    public final int type_katana = 4;
+    public final int type_shield = 5;
+    public final int type_consumable = 6;
+    public final int type_pickaxe = 7;
     
     
     public Entity(GamePanel gp){
@@ -110,6 +129,7 @@ public class Entity {
         }
     
     }
+    public void use(Entity entity){}
     public void update(){
         setAction();
         
@@ -123,7 +143,13 @@ public class Entity {
         if(this.type == 2 && contactPlayer == true){
             if(gp.player.invincible == false){
                 gp.PlaySE(10);
-                gp.player.life -= 1;
+
+                int damage = attack - defense;
+                if(damage < 0){
+                    damage = 0;
+                }
+
+                gp.player.life -= damage;
                 gp.player.invincible = true;
             
             }
@@ -215,7 +241,7 @@ public class Entity {
         }
         
             //HEALTH BAR OF THE MONSTER ENTITY
-            if(type == 2 && hpBarOn == true){
+            if(type == type_monster && hpBarOn == true){
                 
                 double oneScale = (double)gp.tileSize/maxLife;
                 double hpBarValue = oneScale * life;
@@ -264,7 +290,7 @@ public class Entity {
     
         dyingCounter ++;
         
-        int i = 10;
+        int i = 5;
         
         if(dyingCounter <= i){changeAlpha(g2, 0f);}
         if(dyingCounter > i && dyingCounter <= i * 2){ changeAlpha(g2, 1f);}
@@ -276,7 +302,7 @@ public class Entity {
         if(dyingCounter > i * 7 && dyingCounter <= i * 8){changeAlpha(g2, 1f);}
         
         if(dyingCounter > i * 8){
-            dying = false;
+           // dying = false;
             alive = false;
         }
     }
@@ -300,4 +326,12 @@ public class Entity {
        }
          return image;
       }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Entity entity = (Entity) o;
+        // Compare relevant fields that make items unique
+        return name.equals(entity.name); // or other identifying fields
+    }
 }

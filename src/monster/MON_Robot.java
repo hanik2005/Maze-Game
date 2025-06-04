@@ -21,11 +21,14 @@ public class MON_Robot extends Entity {
         super(gp);
         this.gp = gp;
         
-        type = 2;
+        type = type_monster;
         name = "Robot";
         speed = 2;
-        maxLife = 4;
+        maxLife = 3;
         life = maxLife;
+        attack = 1;
+        defense = 0;
+        exp = 1;
         
         //COLLISIONS
         solidArea.x = 8; // 8

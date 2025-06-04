@@ -3,15 +3,7 @@ package main;
 
 import entity.NPC_Slime;
 import monster.MON_Robot;
-import object.OBJ_Banana;
-import object.OBJ_Darkness;
-import object.OBJ_Boots;
-import object.OBJ_Brightness;
-import object.OBJ_Coin;
-import object.OBJ_LastPortal;
-import object.OBJ_MagicalDoor;
-import object.OBJ_QuestionMark;
-import object.OBJ_Traps;
+import object.*;
 
 
 public class AssetSetter {
@@ -28,17 +20,19 @@ public class AssetSetter {
         gp.obj[0].worldX = 49 * gp.tileSize;
         gp.obj[0].worldY = 87 * gp.tileSize;//
         
-        gp.obj[1] = new OBJ_Boots(gp);
+        gp.obj[1] = new OBJ_PickAxe(gp);
         gp.obj[1].worldX = 54 * gp.tileSize;
         gp.obj[1].worldY = 87 * gp.tileSize;//
         
-        gp.obj[2] = new OBJ_QuestionMark(gp);
+        gp.obj[2] = new OBJ_Shield_Diamond(gp);
         gp.obj[2].worldX = 54 * gp.tileSize;
         gp.obj[2].worldY = 83 * gp.tileSize;//
         
-        gp.obj[3] = new OBJ_Traps(gp);
+        gp.obj[3] = new OBJ_Katana(gp);
         gp.obj[3].worldX = 49 * gp.tileSize;
         gp.obj[3].worldY = 81 * gp.tileSize;//
+
+
         
         
         

@@ -16,7 +16,7 @@ public class KeyHandler implements KeyListener{ // KeyListener is the listnener 
                                                 // when you implement KeyListener you hace to add three methods which is keyTyped, keyPressed, 
                                                 //and keyReleased
     
-    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed, shootKeyPressed;
     
     //DEBUG
     
@@ -109,6 +109,11 @@ public class KeyHandler implements KeyListener{ // KeyListener is the listnener 
         if(code == KeyEvent.VK_RIGHT){
             rightPressed = false;
         
+        }
+
+        //PROJECTILES
+        if(code == KeyEvent.VK_F){
+            shootKeyPressed = false;
         }
     
     }
@@ -299,6 +304,37 @@ public class KeyHandler implements KeyListener{ // KeyListener is the listnener 
          if(code == KeyEvent.VK_C){
                 gp.gameState = gp.playState;
             }
+         if(code == KeyEvent.VK_W){
+             if(gp.ui.slotRow != 0){
+                 gp.ui.slotRow --;
+                 gp.PlaySE(12);
+             }
+
+         }
+         if(code == KeyEvent.VK_A){
+             if(gp.ui.slotCol != 0){
+                 gp.ui.slotCol --;
+                 gp.PlaySE(12);
+             }
+
+         }
+         if(code == KeyEvent.VK_S){
+             if(gp.ui.slotRow != 3){
+                 gp.ui.slotRow ++;
+                 gp.PlaySE(12);
+             }
+
+         }
+         if(code == KeyEvent.VK_D){
+             if(gp.ui.slotCol != 4){
+                 gp.ui.slotCol ++;
+                 gp.PlaySE(12);
+             }
+
+         }
+         if (code == KeyEvent.VK_ENTER){
+             gp.player.selectItem();
+         }
      
      }
      public void instructionState(int code){
@@ -456,6 +492,9 @@ public class KeyHandler implements KeyListener{ // KeyListener is the listnener 
             if(code == KeyEvent.VK_ENTER){
                     //System.out.println("asdada");
                     enterPressed = true;
+            }
+            if(code == KeyEvent.VK_F){
+                shootKeyPressed = true;
             }
 
             //PRESSED SETTING STATE

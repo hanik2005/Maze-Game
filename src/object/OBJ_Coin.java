@@ -20,6 +20,8 @@ public class OBJ_Coin extends Entity{
         name = "Coin";
         down1 = setup("/objects/coin_new", gp.tileSize, gp.tileSize);
         image = setup("/objects/coin_new", gp.tileSize, gp.tileSize);
+        description = "[" + name + "]\nImportant Coin.";
+
        
     
     }
