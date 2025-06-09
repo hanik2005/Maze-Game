@@ -16,7 +16,7 @@ public class AssetSetter {
     }
     
     public void setObject_1(){
-        gp.obj[0] = new OBJ_Coin(gp);
+        gp.obj[0] = new OBJ_PistolGun(gp);
         gp.obj[0].worldX = 49 * gp.tileSize;
         gp.obj[0].worldY = 87 * gp.tileSize;//
         

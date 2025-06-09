@@ -28,6 +28,8 @@ public class Entity {
     public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, 
             attackLeft1, attackLeft2, attackRight1, attackRight2;
 
+    public BufferedImage shootUp1,  shootUp2, shootDown1, shootDown2, shootLeft1, shootLeft2, shootRight1, shootRight2;
+
     //EXTRA
     public BufferedImage attackUp3, attackDown3, attackLeft3, attackRight3;
     
@@ -50,6 +52,7 @@ public class Entity {
     public boolean invincible = false;
     public boolean hpBarOn = false;
     boolean attacking = false;
+    public boolean shooting = false;
     
     //COUNTER
     public int actionLockCounter = 0;
@@ -65,6 +68,8 @@ public class Entity {
     public int life;
     public int maxMana;
     public int mana;
+    public int maxBullet;
+    public int bullet;
     public int strength;
     public int speed;
     public String name;
@@ -72,16 +77,19 @@ public class Entity {
     public int dexterity;
     public int attack;
     public int defense;
+    public int projectileDamage;
     public int exp; //DEPENDS OF ME
     public int nextLevelExp;
     public int coin;
     public Entity currentWeapon;
     public Entity currentShield;
-    public Projectile projectile;
+    public Entity currentProjectile;
+    public Projectile projectile, projectileBullet, projectileRock;
     
     //ITEMS ATRIBUTES
     public int attackValue;
     public int defenseValue;
+    public int projectileAttackValue;
     public String description = "";
     public int useCost;
 
@@ -95,6 +103,9 @@ public class Entity {
     public final int type_shield = 5;
     public final int type_consumable = 6;
     public final int type_pickaxe = 7;
+    public final int type_rock = 8;
+    public final int type_gun = 9;
+
     
     
     public Entity(GamePanel gp){
@@ -141,18 +152,7 @@ public class Entity {
         boolean contactPlayer = gp.cChecker.checkPlayer(this);
         
         if(this.type == 2 && contactPlayer == true){
-            if(gp.player.invincible == false){
-                gp.PlaySE(10);
-
-                int damage = attack - defense;
-                if(damage < 0){
-                    damage = 0;
-                }
-
-                gp.player.life -= damage;
-                gp.player.invincible = true;
-            
-            }
+            damagePlayer(attack);
         }
         
          if(collisionOn == false){
@@ -193,7 +193,24 @@ public class Entity {
              }
          
          }
+        if(shotAvailableCounter < 30){
+            shotAvailableCounter++;
+        }
     
+    }
+    public void damagePlayer(int attack){
+        if(gp.player.invincible == false){
+            gp.PlaySE(10);
+
+            int damage = attack - defense;
+            if(damage < 0){
+                damage = 0;
+            }
+
+            gp.player.life -= damage;
+            gp.player.invincible = true;
+
+        }
     }
     public void draw(Graphics2D g2){
         BufferedImage image = null;
@@ -333,5 +350,8 @@ public class Entity {
         Entity entity = (Entity) o;
         // Compare relevant fields that make items unique
         return name.equals(entity.name); // or other identifying fields
+    }
+    public boolean exist(boolean weaponExist){
+        return weaponExist;
     }
 }

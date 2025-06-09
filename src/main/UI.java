@@ -9,14 +9,16 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import static java.awt.SystemColor.text;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
+
+import object.OBJ_Ammo;
 import object.OBJ_Coin;
 import object.OBJ_Heart;
+import object.OBJ_Mana;
 
 /**
  *
@@ -27,7 +29,7 @@ public class UI {
     GamePanel gp;
     Graphics2D g2;
     Font arial_40, arial_80B, arial_40B, arial_50B, arial_30;
-    BufferedImage coinImage, heart_full, heart_half, heart_blank, background_image;
+    BufferedImage coinImage, heart_full, heart_half, heart_blank, background_image, ammo_full, ammo_blank, mana_full, mana_blank;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -62,6 +64,16 @@ public class UI {
         heart_full = heart.image;
         heart_half = heart.image2;
         heart_blank = heart.image3;
+
+        //CREATE AMMO OBJECT
+        Entity mana = new OBJ_Mana(gp);
+        mana_full = mana.image;
+        mana_blank = mana.image2;
+
+        //CREATE AMMO OBJECT
+        Entity ammo = new OBJ_Ammo(gp);
+        ammo_full = ammo.image;
+        ammo_blank = ammo.image2;
     
     }
     public void showMessage(String text){
@@ -109,6 +121,8 @@ public class UI {
         
         if(gp.gameState == gp.playState){
            drawPlayerLife();
+           drawPlayerMana();
+           drawPlayerAmmo();
            drawCoinAndTimeCount();
            drawMessage();
         }
@@ -154,6 +168,59 @@ public class UI {
      
         
         
+    }
+    public void drawPlayerMana(){
+        if(gp.player.type == gp.player.type_rock) {
+            int x = gp.tileSize / 2;
+            int y = gp.tileSize / 2;
+            int i = 0;
+
+            //DRAW MAX BULLET
+            x = (gp.tileSize / 2) - 5;
+            y = (int) (gp.tileSize * 1.5);
+            i = 0;
+            while (i < gp.player.maxMana) {
+                g2.drawImage(mana_blank, x, y, null);
+                i++;
+                x += 35;
+            }
+            //DRAW AMMO
+            x = (gp.tileSize / 2) - 5;
+            y = (int) (gp.tileSize * 1.5);
+            i = 0;
+            while (i < gp.player.mana) {
+                g2.drawImage(mana_full, x, y, null);
+                i++;
+                x += 35;
+            }
+        }
+    }
+    public void drawPlayerAmmo(){
+        if(gp.player.ammoExisted) {
+            int x = gp.tileSize / 2;
+            int y = gp.tileSize / 2;
+            int i = 0;
+
+            //DRAW MAX BULLET
+            x = (gp.tileSize / 2) - 5;
+            y = (int) (gp.tileSize * 2.5);
+            i = 0;
+            while (i < gp.player.maxBullet) {
+                g2.drawImage(ammo_blank, x, y, null);
+                i++;
+                x += 35;
+            }
+            //DRAW AMMO
+            x = (gp.tileSize / 2) - 5;
+            y = (int) (gp.tileSize * 2.5);
+            i = 0;
+            while (i < gp.player.bullet) {
+                g2.drawImage(ammo_full, x, y, null);
+                i++;
+                x += 35;
+            }
+        }
+
     }
     public void checkTimeLevel(){
        if(gp.LevelState == gp.Levels_1){
@@ -249,9 +316,9 @@ public class UI {
         
         //CREATE A FRAME
         final int frameX = gp.tileSize * 2;
-        final int frameY = gp.tileSize;
+        final int frameY = 0;
         final int frameWidth = gp.tileSize * 5;
-        final int frameHeight = gp.tileSize * 10;
+        final int frameHeight = gp.tileSize * 13;
         
         drawSubWindow(frameX, frameY, frameWidth, frameHeight);
         
@@ -269,6 +336,12 @@ public class UI {
         
         g2.drawString("Life", textX, textY);
         textY += lineHeight;
+
+        g2.drawString("Mana", textX, textY);
+        textY += lineHeight;
+
+        g2.drawString("Bullet", textX, textY);
+        textY += lineHeight;
         
         g2.drawString("Strength", textX, textY);
         textY += lineHeight;
@@ -281,6 +354,9 @@ public class UI {
         
         g2.drawString("Defense", textX, textY);
         textY += lineHeight;
+
+        g2.drawString("Projectile", textX, textY);
+        textY += lineHeight;
         
         g2.drawString("Exp", textX, textY);
         textY += lineHeight;
@@ -289,13 +365,16 @@ public class UI {
         textY += lineHeight;
         
         g2.drawString("Coin", textX, textY);
-        textY += lineHeight + 20; //IF LAST IN TEXT VALUES ADD 20 TO HAVE ROOM OF IMAGES
+        textY += lineHeight; //IF LAST IN TEXT VALUES ADD 20 TO HAVE ROOM OF IMAGES
         
         g2.drawString("Weapon", textX, textY);
         textY += lineHeight + 15;
         
         g2.drawString("Shield", textX, textY);
-        textY += lineHeight;
+        textY += lineHeight + 15;
+
+        g2.drawString("Projectile", textX, textY);
+        textY += lineHeight + 15;
         
         //VALUES
         int tailX = (frameX + frameWidth) - 30;
@@ -311,6 +390,16 @@ public class UI {
         textY += lineHeight;
         
         value = String.valueOf(gp.player.life + "/" + gp.player.maxLife);
+        textX = getXAlignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.mana + "/" + gp.player.maxMana);
+        textX = getXAlignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.bullet + "/" + gp.player.maxBullet);
         textX = getXAlignToRightText(value, tailX);
         g2.drawString(value, textX, textY);
         textY += lineHeight;
@@ -334,6 +423,11 @@ public class UI {
         textX = getXAlignToRightText(value, tailX);
         g2.drawString(value, textX, textY);
         textY += lineHeight;
+
+        value = String.valueOf(gp.player.projectileDamage);
+        textX = getXAlignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
         
         value = String.valueOf(gp.player.exp);
         textX = getXAlignToRightText(value, tailX);
@@ -351,10 +445,13 @@ public class UI {
         textY += lineHeight; 
         
         //DRAW THE WEAPON AND THE SHIELD IMAGE
-        g2.drawImage(gp.player.currentWeapon.down1, tailX - gp.tileSize, textY - 15, null);
+        g2.drawImage(gp.player.currentWeapon.down1, tailX - gp.tileSize, textY - 34, null);
         textY += gp.tileSize;
         
-        g2.drawImage(gp.player.currentShield.down1, tailX - gp.tileSize, textY - 15, null);
+        g2.drawImage(gp.player.currentShield.down1, tailX - gp.tileSize, textY - 40, null);
+        textY += gp.tileSize;
+
+        g2.drawImage(gp.player.currentProjectile.down1, tailX - gp.tileSize, textY - 40, null);
         textY += gp.tileSize;
                 
     }
@@ -966,7 +1063,7 @@ public class UI {
 
              //EQUIP CURSOR
              if (gp.player.inventory.get(i).equals(gp.player.currentWeapon) ||
-                     gp.player.inventory.get(i).equals(gp.player.currentShield)){
+                     gp.player.inventory.get(i).equals(gp.player.currentShield) || gp.player.inventory.get(i).equals(gp.player.currentProjectile)){
                  //System.out.println("DEBBBBBUG");
                  g2.setColor(new Color(240, 190, 90));
                  g2.fillRoundRect(slotX, slotY, gp.tileSize, gp.tileSize, 10, 10);

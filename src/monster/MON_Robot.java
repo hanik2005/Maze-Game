@@ -8,6 +8,7 @@ import entity.Entity;
 import java.awt.Rectangle;
 import java.util.Random;
 import main.GamePanel;
+import object.OBJ_Fireball;
 
 /**
  *
@@ -28,7 +29,8 @@ public class MON_Robot extends Entity {
         life = maxLife;
         attack = 1;
         defense = 0;
-        exp = 1;
+        exp = 2;
+        projectile = new OBJ_Fireball(gp);
         
         //COLLISIONS
         solidArea.x = 8; // 8
@@ -78,6 +80,13 @@ public class MON_Robot extends Entity {
              
              
             actionLockCounter = 0;
+
+        }
+        int i = new Random().nextInt(100) + 1;
+        if(i > 99 && projectile.alive == false && shotAvailableCounter == 30){
+            projectile.set(worldX, worldY, direction, true, this);
+            gp.projectileList.add(projectile);
+            shotAvailableCounter = 0;
         }
     
     }

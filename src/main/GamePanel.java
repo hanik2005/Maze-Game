@@ -80,6 +80,7 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
     public Entity npc[] = new Entity[11];
     public Entity monster[] = new Entity[20];
     public Entity obj[] = new Entity[100];
+    public Entity entity = new Entity(this);
     ArrayList<Entity> entityList = new ArrayList<>();
     public ArrayList<Entity> projectileList = new ArrayList<>();
     

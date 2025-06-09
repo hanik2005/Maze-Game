@@ -15,6 +15,7 @@ public class Projectile extends Entity{
        this.direction = direction;
        this.alive = alive;
        this.user = user;
+       this.attack = user.projectileDamage; // Use the player's calculated projectile damage
        this.life = this.maxLife;
 
 
@@ -29,7 +30,11 @@ public class Projectile extends Entity{
             }
         }
         if(user != gp.player){
-
+            boolean contactPlayer = gp.cChecker.checkPlayer(this);
+            if(gp.player.invincible == false && contactPlayer == true){
+                damagePlayer(attack);
+                alive = false;
+            }
         }
 
         switch (direction){
@@ -56,6 +61,13 @@ public class Projectile extends Entity{
 
 
         }
+
+    }
+    public boolean haveResource(Entity user){
+        boolean haveResource = false;
+        return haveResource;
+    }
+    public void subtractResource(Entity user){
 
     }
 }

@@ -489,7 +489,7 @@ public class KeyHandler implements KeyListener{ // KeyListener is the listnener 
                     gp.playMusic(0);
                 }
             }
-            if(code == KeyEvent.VK_ENTER){
+            if(code == KeyEvent.VK_ENTER && !enterPressed ){
                     //System.out.println("asdada");
                     enterPressed = true;
             }
