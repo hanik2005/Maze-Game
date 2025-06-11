@@ -419,6 +419,17 @@ public class Player extends Entity{
             shotAvailableCounter++;
         }
 
+        //TO NOT OVERLOAD PLAYER LIFE, MANA AND BULLET
+        if (life > maxLife){
+            life = maxLife;
+        }
+        if (mana > maxMana){
+            mana = maxMana;
+        }
+        if (bullet > maxBullet){
+            bullet = maxBullet;
+        }
+
 
         //UPDATE METHOD EXAMPLE
         // System.out.println(updateRunner++);
@@ -597,77 +608,29 @@ public class Player extends Entity{
     }
     public void pickupObject(int i){
         if (i != 999) {
-            String text;
-            if(inventory.size() != maxInventorySize){
+            //PICK UP ONLY ITEMS
+            if (gp.obj[i].type == type_pickUpOnly) {
 
-                inventory.add(gp.obj[i]);
-                gp.PlaySE(1);
-                text = "Got a " + gp.obj[i].name + "!";
+                gp.obj[i].use(this);
+                gp.obj[i] = null;
+
             }
-            else{
-                text = "You cannot carry any more";
+
+            //INVENTORY ITEMS
+            else {
+                String text;
+                if (inventory.size() != maxInventorySize) {
+
+                    inventory.add(gp.obj[i]);
+                    gp.PlaySE(1);
+                    text = "Got a " + gp.obj[i].name + "!";
+                } else {
+                    text = "You cannot carry any more";
+                }
+                gp.ui.addMessage(text);
+                gp.obj[i] = null;
+
             }
-            gp.ui.addMessage(text);
-            gp.obj[i] = null;
-//            String objectName = gp.obj[i].name; //specific reaction in each object
-//            switch (objectName) {
-//                case "Coin":
-//                    gp.PlaySE(1);
-//                    coin++;
-//                    gp.obj[i] = null;
-//                    //gp.ui.showMessage("YourMear");
-//                    break;
-//                case "Boots":
-//                    gp.PlaySE(2);
-//                    speed+=1;
-//                    gp.obj[i] = null;
-//                    //gp.ui.showMessage("BOOTS");
-//                    break;
-//                case "lastPortal":
-//                  //  gp.ui.gameFinished = true;
-//                    gp.gameState = gp.gameFinishedState;
-//                    gp.stopMusic();
-//                    gp.PlaySE(3);
-//                    break;
-//                case "Banana":
-//                    if(speed > 1){
-//                    speed-=1;
-//                    gp.PlaySE(4);
-//                    gp.obj[i] = null; // the object dissapear
-//                    break;
-//                    }else{
-//                        resGameOver();
-//                    }
-//                case "questionMark":
-//                    gp.PlaySE(1);
-//                    randomizeEffect();
-//                    gp.obj[i] = null;
-//
-//                    break;
-//                case "Brightness":
-//                    gp.PlaySE(6);
-//                    System.out.println("Check 1: " + gp.eManagerActive); // DEBUG
-//                    gp.eManagerActive = false;
-//                    secondsBol = true;
-//                    secondsCounter = 120; // 300
-//                    System.out.println("Check 2: " + gp.eManagerActive); // DEBUG
-//                    gp.obj[i] = null;
-//                case "magicalDoor":
-//                    if(hasCoin >= 5){
-//                        gp.obj[i] = null;
-//                        gp.ui.showMessage("YOU OPEN IT");
-//
-//                    }
-//                    break;
-//                case "Traps":
-//                    gp.PlaySE(8);
-//                    life -= 1;
-//                    gp.gameState = gp.dialogueState;
-//                    gp.ui.currentDialogue = "you fall hit loser";
-//                    gp.obj[i] = null;
-//
-//
-//            }
         }
 
     }

@@ -87,6 +87,7 @@ public class Entity {
     public Projectile projectile, projectileBullet, projectileRock;
     
     //ITEMS ATRIBUTES
+    public int value;
     public int attackValue;
     public int defenseValue;
     public int projectileAttackValue;
@@ -105,6 +106,7 @@ public class Entity {
     public final int type_pickaxe = 7;
     public final int type_rock = 8;
     public final int type_gun = 9;
+    public final int type_pickUpOnly = 10;
 
     
     
@@ -141,6 +143,17 @@ public class Entity {
     
     }
     public void use(Entity entity){}
+    public void checkDrop(){}
+    public void dropItem(Entity droppedItem){
+        for (int i = 0; i < gp.obj.length; i++){
+            if (gp.obj[i] == null){
+                gp.obj[i] = droppedItem;
+                gp.obj[i].worldX = worldX; // THE MONSTER DROPPED POSITION X
+                gp.obj[i].worldY = worldY;//THE MONSTER DROPPED POSITION Y
+                break;
+            }
+        }
+    }
     public void update(){
         setAction();
         
@@ -290,7 +303,7 @@ public class Entity {
             }
             
             
-            g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(image, screenX, screenY, null);
             
             //RESET OPACITY
             changeAlpha(g2, 1F);

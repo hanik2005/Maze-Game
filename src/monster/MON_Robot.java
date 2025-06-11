@@ -8,7 +8,10 @@ import entity.Entity;
 import java.awt.Rectangle;
 import java.util.Random;
 import main.GamePanel;
+import object.OBJ_Coin;
 import object.OBJ_Fireball;
+import object.OBJ_Heart;
+import object.OBJ_Mana;
 
 /**
  *
@@ -93,6 +96,22 @@ public class MON_Robot extends Entity {
     public void damageReaction(){
         actionLockCounter = 0;
         direction = gp.player.direction;
+    }
+    public void checkDrop(){
+
+        //CAST A DIE
+        int i = new Random().nextInt(100) + 1;
+
+        //GET THE MONSTER DROP
+        if(i < 50){
+            dropItem(new OBJ_Coin(gp));
+        }
+        if (i > 50 && i < 75){
+            dropItem(new OBJ_Heart(gp));
+        }
+        if (i >= 75 && i < 100){
+            dropItem(new OBJ_Mana(gp));
+        }
     }
     
 }

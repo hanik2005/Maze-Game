@@ -9,8 +9,16 @@ public class OBJ_Mana extends Entity {
         super(gp);
         this.gp = gp;
 
+        type = type_pickUpOnly;
         name = "Mana";
+        value = 1;
+        down1 = setup("/objects/mana_full", gp.tileSize, gp.tileSize);
         image = setup("/objects/mana_full", gp.tileSize, gp.tileSize);
         image2 = setup("/objects/mana_blank", gp.tileSize, gp.tileSize);
+    }
+    public void use(Entity entity){
+        gp.PlaySE(2);
+        gp.ui.addMessage("Mana +" + value);
+        entity.mana += value;
     }
 }
