@@ -5,8 +5,6 @@
 package object;
 
 import entity.Entity;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import main.GamePanel;
 
 /**
@@ -18,7 +16,7 @@ public class OBJ_MagicalDoor extends Entity {
     public OBJ_MagicalDoor(GamePanel gp){
         super(gp);
         name = "magicalDoor";
-        down1 = setup("/objects/MagicalDoor", gp.tileSize, gp.tileSize);
+        down1 = setup("/Assets/objects/MagicalDoor", gp.tileSize, gp.tileSize);
         collision = true;
         
         solidArea.x = 0;

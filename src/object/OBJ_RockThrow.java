@@ -18,14 +18,14 @@ public class OBJ_RockThrow extends Projectile {
         getImage();
     }
     public void  getImage(){
-        up1 = setup("/projectiles/Rock/rock_down_1", gp.tileSize, gp.tileSize);
-        up2 = setup("/projectiles/Rock/rock_down_2", gp.tileSize, gp.tileSize);
-        down1 = setup("/projectiles/Rock/rock_down_1", gp.tileSize, gp.tileSize);
-        down2 = setup("/projectiles/Rock/rock_down_2", gp.tileSize, gp.tileSize);
-        left1 = setup("/projectiles/Rock/rock_down_1", gp.tileSize, gp.tileSize);
-        left2 = setup("/projectiles/Rock/rock_down_2", gp.tileSize, gp.tileSize);
-        right1 = setup("/projectiles/Rock/rock_down_1", gp.tileSize, gp.tileSize);
-        right2 = setup("/projectiles/Rock/rock_down_2", gp.tileSize, gp.tileSize);
+        up1 = setup("/Assets/projectiles/Rock/rock_down_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/Assets/projectiles/Rock/rock_down_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/Assets/projectiles/Rock/rock_down_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/Assets/projectiles/Rock/rock_down_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/Assets/projectiles/Rock/rock_down_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/Assets/projectiles/Rock/rock_down_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/Assets/projectiles/Rock/rock_down_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/Assets/projectiles/Rock/rock_down_2", gp.tileSize, gp.tileSize);
     }
     public boolean haveResource(Entity user){
         boolean haveResource = false;

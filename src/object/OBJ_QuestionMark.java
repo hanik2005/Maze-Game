@@ -5,8 +5,6 @@
 package object;
 
 import entity.Entity;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import main.GamePanel;
 
 /**
@@ -18,7 +16,7 @@ public class OBJ_QuestionMark extends Entity {
     public OBJ_QuestionMark(GamePanel gp){
         super(gp);
         name = "questionMark";
-        down1 = setup("/objects/questionMark", gp.tileSize, gp.tileSize);
+        down1 = setup("/Assets/objects/questionMark", gp.tileSize, gp.tileSize);
         
         
     

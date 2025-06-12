@@ -23,20 +23,21 @@ public class Sound {
     Float volume;
 
     public Sound() {
-        soundURL[0] = getClass().getResource("/sound/Blocks - Minecraft Music Disc - C418.wav");
-        soundURL[1] = getClass().getResource("/sound/coin.wav");
-        soundURL[2] = getClass().getResource("/sound/powerup.wav");
-        soundURL[3] = getClass().getResource("/sound/fanfare.wav");
-        soundURL[4] = getClass().getResource("/sound/banana_effect.wav");
-        soundURL[5] = getClass().getResource("/sound/GameOver.wav");
-        soundURL[6] = getClass().getResource("/sound/shadow.wav");
-        soundURL[7] = getClass().getResource("/sound/background_music.wav");
-        soundURL[8] = getClass().getResource("/sound/spike_trap.wav");
-        soundURL[9] = getClass().getResource("/sound/hitmonster.wav");
-        soundURL[10] = getClass().getResource("/sound/receivedamage.wav");
-        soundURL[11] = getClass().getResource("/sound/swing.wav");
-        soundURL[12] = getClass().getResource("/sound/cursor.wav");
-        soundURL[13] = getClass().getResource("/sound/burning.wav");
+        soundURL[0] = getClass().getResource("/Assets/sound/Blocks - Minecraft Music Disc - C418.wav");
+        soundURL[1] = getClass().getResource("/Assets/sound/coin.wav");
+        soundURL[2] = getClass().getResource("/Assets/sound/powerup.wav");
+        soundURL[3] = getClass().getResource("/Assets/sound/fanfare.wav");
+        soundURL[4] = getClass().getResource("/Assets/sound/banana_effect.wav");
+        soundURL[5] = getClass().getResource("/Assets/sound/GameOver.wav");
+        soundURL[6] = getClass().getResource("/Assets/sound/shadow.wav");
+        soundURL[7] = getClass().getResource("/Assets/sound/background_music.wav");
+        soundURL[8] = getClass().getResource("/Assets/sound/spike_trap.wav");
+        soundURL[9] = getClass().getResource("/Assets/sound/hitmonster.wav");
+        soundURL[10] = getClass().getResource("/Assets/sound/receivedamage.wav");
+        soundURL[11] = getClass().getResource("/Assets/sound/swing.wav");
+        soundURL[12] = getClass().getResource("/Assets/sound/cursor.wav");
+        soundURL[13] = getClass().getResource("/Assets/sound/burning.wav");
+        soundURL[14] = getClass().getResource("/Assets/sound/destroyed_brick_sound.wav");
 
     }
 

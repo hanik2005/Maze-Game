@@ -9,7 +9,7 @@ public class OBJ_Rock extends Entity {
         type = type_rock;
         name = "Rock";
         projectileAttackValue = 1;
-        down1 = setup("/projectiles/Rock/rock_down_1", gp.tileSize, gp.tileSize);
+        down1 = setup("/Assets/projectiles/Rock/rock_down_1", gp.tileSize, gp.tileSize);
         attackValue = 1; //TEMPORARY VALUE
         description = "[" + name + "]\n Old Rock.";
 

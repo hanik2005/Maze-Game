@@ -5,8 +5,6 @@
 package object;
 
 import entity.Entity;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import main.GamePanel;
 
 public class OBJ_Coin extends Entity{
@@ -18,8 +16,8 @@ public class OBJ_Coin extends Entity{
         type = type_pickUpOnly;
         name = "Coin";
         value = 1;
-        down1 = setup("/objects/coin_new", gp.tileSize, gp.tileSize);
-        image = setup("/objects/coin_new", gp.tileSize, gp.tileSize);
+        down1 = setup("/Assets/objects/coin_new", gp.tileSize, gp.tileSize);
+        image = setup("/Assets/objects/coin_new", gp.tileSize, gp.tileSize);
         description = "[" + name + "]\nImportant Coin.";
 
        

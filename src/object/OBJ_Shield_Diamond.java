@@ -9,7 +9,7 @@ public class OBJ_Shield_Diamond extends Entity{
         super(gp);
         type = type_shield;
         name = "Diamond Shield";
-        down1 = setup("/objects/shield_diamond", gp.tileSize, gp.tileSize);
+        down1 = setup("/Assets/objects/shield_diamond", gp.tileSize, gp.tileSize);
         defenseValue = 2; //TEMPORARY VALUE
         description = "[" + name + "]\nStrongest Shield has the \nfinest diamond.";
     }

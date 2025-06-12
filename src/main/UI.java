@@ -607,7 +607,7 @@ public class UI {
     public void drawBackground(){
         UtilityTool uTool = new UtilityTool();
         try{
-            background_image = ImageIO.read(getClass().getResourceAsStream("/backgrounds/background.png"));
+            background_image = ImageIO.read(getClass().getResourceAsStream("/Assets/backgrounds/background.png"));
             background_image =  uTool.scaleImage(background_image, gp.tileSize, gp.tileSize);
             g2.drawImage(background_image, 0, 0, gp.screenWidth, gp.screenHeight, null);
         }catch(IOException e){

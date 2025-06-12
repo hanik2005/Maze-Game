@@ -5,8 +5,6 @@
 package object;
 
 import entity.Entity;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import main.GamePanel;
 
 /**
@@ -19,7 +17,7 @@ public class OBJ_LastPortal extends Entity {
     public OBJ_LastPortal(GamePanel gp){
         super(gp);
         name = "lastPortal";
-        down1 = setup("/objects/LastPortal", gp.tileSize, gp.tileSize);
+        down1 = setup("/Assets/objects/LastPortal", gp.tileSize, gp.tileSize);
         
     }
 }

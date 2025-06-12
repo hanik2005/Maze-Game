@@ -174,15 +174,15 @@ public class Player extends Entity{
 
     public void getPlayerImage() {
 
-        idle = setup("/player/Main_front_1", gp.tileSize, gp.tileSize);
-        up1 = setup("/player/Main_up_new_1", gp.tileSize, gp.tileSize);
-        up2 = setup("/player/Main_up_new_2", gp.tileSize, gp.tileSize);
-        down1 = setup("/player/Main_front_new_1", gp.tileSize, gp.tileSize);
-        down2 = setup("/player/Main_front_new_2", gp.tileSize, gp.tileSize);
-        left1 = setup("/player/Main_left_1", gp.tileSize, gp.tileSize);
-        left2 = setup("/player/Main_left_2", gp.tileSize, gp.tileSize);
-        right1 = setup("/player/Main_right_1", gp.tileSize, gp.tileSize);
-        right2 = setup("/player/Main_right_2", gp.tileSize, gp.tileSize);
+        idle = setup("/Assets/player/Main_front_1", gp.tileSize, gp.tileSize);
+        up1 = setup("/Assets/player/Main_up_new_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/Assets/player/Main_up_new_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/Assets/player/Main_front_new_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/Assets/player/Main_front_new_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/Assets/player/Main_left_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/Assets/player/Main_left_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/Assets/player/Main_right_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/Assets/player/Main_right_2", gp.tileSize, gp.tileSize);
 
 
 
@@ -192,59 +192,59 @@ public class Player extends Entity{
     public void getPlayerAttackImage(){
         System.out.println("Loading attack images for weapon type: " + currentWeapon.type);
             if (currentWeapon.type == type_sword) {
-                attackUp1 = setup("/player/attack/player_up_attack_1", gp.tileSize, gp.tileSize * 2);
-                attackUp2 = setup("/player/attack/player_up_attack_2", gp.tileSize, gp.tileSize * 2);
-                attackDown1 = setup("/player/attack/player_front_attack_1", gp.tileSize, gp.tileSize * 2);
-                attackDown2 = setup("/player/attack/player_front_attack_2", gp.tileSize, gp.tileSize * 2);
-                attackLeft1 = setup("/player/attack/player_left_attack_1", gp.tileSize * 2, gp.tileSize);
-                attackLeft2 = setup("/player/attack/player_left_attack_2", gp.tileSize * 2, gp.tileSize);
-                attackRight1 = setup("/player/attack/player_right_attack_1", gp.tileSize * 2, gp.tileSize);
-                attackRight2 = setup("/player/attack/player_right_attack_2", gp.tileSize * 2, gp.tileSize);
+                attackUp1 = setup("/Assets/player/attack/player_up_attack_1", gp.tileSize, gp.tileSize * 2);
+                attackUp2 = setup("/Assets/player/attack/player_up_attack_2", gp.tileSize, gp.tileSize * 2);
+                attackDown1 = setup("/Assets/player/attack/player_front_attack_1", gp.tileSize, gp.tileSize * 2);
+                attackDown2 = setup("/Assets/player/attack/player_front_attack_2", gp.tileSize, gp.tileSize * 2);
+                attackLeft1 = setup("/Assets/player/attack/player_left_attack_1", gp.tileSize * 2, gp.tileSize);
+                attackLeft2 = setup("/Assets/player/attack/player_left_attack_2", gp.tileSize * 2, gp.tileSize);
+                attackRight1 = setup("/Assets/player/attack/player_right_attack_1", gp.tileSize * 2, gp.tileSize);
+                attackRight2 = setup("/Assets/player/attack/player_right_attack_2", gp.tileSize * 2, gp.tileSize);
             }
             if (currentWeapon.type == type_katana) {
-                attackUp1 = setup("/player/attack/player_up_attack_1", gp.tileSize, gp.tileSize * 2);
-                attackUp2 = setup("/player/attack/player_up_attack_2", gp.tileSize, gp.tileSize * 2);
-                attackDown1 = setup("/player/katana_attack/player_front_attack_1", gp.tileSize, gp.tileSize * 2);
-                attackDown2 = setup("/player/katana_attack/player_front_attack_3", gp.tileSize, gp.tileSize * 2);
-                attackDown3 = setup("/player/katana_attack/player_front_attack_2", gp.tileSize, gp.tileSize * 2);
-                attackLeft1 = setup("/player/attack/player_left_attack_1", gp.tileSize * 2, gp.tileSize);
-                attackLeft2 = setup("/player/attack/player_left_attack_2", gp.tileSize * 2, gp.tileSize);
-                attackRight1 = setup("/player/attack/player_right_attack_1", gp.tileSize * 2, gp.tileSize);
-                attackRight2 = setup("/player/attack/player_right_attack_2", gp.tileSize * 2, gp.tileSize);
+                attackUp1 = setup("/Assets/player/attack/player_up_attack_1", gp.tileSize, gp.tileSize * 2);
+                attackUp2 = setup("/Assets/player/attack/player_up_attack_2", gp.tileSize, gp.tileSize * 2);
+                attackDown1 = setup("/Assets/player/katana_attack/player_front_attack_1", gp.tileSize, gp.tileSize * 2);
+                attackDown2 = setup("/Assets/player/katana_attack/player_front_attack_3", gp.tileSize, gp.tileSize * 2);
+                attackDown3 = setup("/Assets/player/katana_attack/player_front_attack_2", gp.tileSize, gp.tileSize * 2);
+                attackLeft1 = setup("/Assets/player/attack/player_left_attack_1", gp.tileSize * 2, gp.tileSize);
+                attackLeft2 = setup("/Assets/player/attack/player_left_attack_2", gp.tileSize * 2, gp.tileSize);
+                attackRight1 = setup("/Assets/player/attack/player_right_attack_1", gp.tileSize * 2, gp.tileSize);
+                attackRight2 = setup("/Assets/player/attack/player_right_attack_2", gp.tileSize * 2, gp.tileSize);
             }
             if (currentWeapon.type == type_pickaxe) {
-                attackUp1 = setup("/player/pickaxe_animation/player_up_pick_1", gp.tileSize, gp.tileSize * 2);
-                attackUp2 = setup("/player/pickaxe_animation/player_up_pick_2", gp.tileSize, gp.tileSize * 2);
-                attackDown1 = setup("/player/pickaxe_animation/player_front_pick_1", gp.tileSize, gp.tileSize * 2);
-                attackDown2 = setup("/player/pickaxe_animation/player_front_pick_2", gp.tileSize, gp.tileSize * 2);
-                attackLeft1 = setup("/player/pickaxe_animation/player_left_pick_1", gp.tileSize * 2, gp.tileSize);
-                attackLeft2 = setup("/player/pickaxe_animation/player_left_pick_2", gp.tileSize * 2, gp.tileSize);
-                attackRight1 = setup("/player/pickaxe_animation/player_right_pick_1", gp.tileSize * 2, gp.tileSize);
-                attackRight2 = setup("/player/pickaxe_animation/player_right_pick_2", gp.tileSize * 2, gp.tileSize);
+                attackUp1 = setup("/Assets/player/pickaxe_animation/player_up_pick_1", gp.tileSize, gp.tileSize * 2);
+                attackUp2 = setup("/Assets/player/pickaxe_animation/player_up_pick_2", gp.tileSize, gp.tileSize * 2);
+                attackDown1 = setup("/Assets/player/pickaxe_animation/player_front_pick_1", gp.tileSize, gp.tileSize * 2);
+                attackDown2 = setup("/Assets/player/pickaxe_animation/player_front_pick_2", gp.tileSize, gp.tileSize * 2);
+                attackLeft1 = setup("/Assets/player/pickaxe_animation/player_left_pick_1", gp.tileSize * 2, gp.tileSize);
+                attackLeft2 = setup("/Assets/player/pickaxe_animation/player_left_pick_2", gp.tileSize * 2, gp.tileSize);
+                attackRight1 = setup("/Assets/player/pickaxe_animation/player_right_pick_1", gp.tileSize * 2, gp.tileSize);
+                attackRight2 = setup("/Assets/player/pickaxe_animation/player_right_pick_2", gp.tileSize * 2, gp.tileSize);
             }
 
             if(projectileExist && currentProjectile.type == type_rock){
                 System.out.println("animation");
-                shootUp1 = setup("/player/rockThrow_animation/player_up_attack_1", gp.tileSize, gp.tileSize * 2);
-                shootUp2 = setup("/player/rockThrow_animation/player_up_attack_2", gp.tileSize, gp.tileSize * 2);
-                shootDown1 = setup("/player/rockThrow_animation/player_front_attack_1", gp.tileSize, gp.tileSize * 2);
-                shootDown2 = setup("/player/rockThrow_animation/player_front_attack_2", gp.tileSize, gp.tileSize * 2);
-                shootLeft1 = setup("/player/rockThrow_animation/player_left_attack_1", gp.tileSize * 2, gp.tileSize);
-                shootLeft2 = setup("/player/rockThrow_animation/player_left_attack_2", gp.tileSize * 2, gp.tileSize);
-                shootRight1 = setup("/player/rockThrow_animation/player_right_attack_1", gp.tileSize * 2, gp.tileSize);
-                shootRight2 = setup("/player/rockThrow_animation/player_right_attack_2", gp.tileSize * 2, gp.tileSize);
+                shootUp1 = setup("/Assets/player/rockThrow_animation/player_up_attack_1", gp.tileSize, gp.tileSize * 2);
+                shootUp2 = setup("/Assets/player/rockThrow_animation/player_up_attack_2", gp.tileSize, gp.tileSize * 2);
+                shootDown1 = setup("/Assets/player/rockThrow_animation/player_front_attack_1", gp.tileSize, gp.tileSize * 2);
+                shootDown2 = setup("/Assets/player/rockThrow_animation/player_front_attack_2", gp.tileSize, gp.tileSize * 2);
+                shootLeft1 = setup("/Assets/player/rockThrow_animation/player_left_attack_1", gp.tileSize * 2, gp.tileSize);
+                shootLeft2 = setup("/Assets/player/rockThrow_animation/player_left_attack_2", gp.tileSize * 2, gp.tileSize);
+                shootRight1 = setup("/Assets/player/rockThrow_animation/player_right_attack_1", gp.tileSize * 2, gp.tileSize);
+                shootRight2 = setup("/Assets/player/rockThrow_animation/player_right_attack_2", gp.tileSize * 2, gp.tileSize);
             }
 
             if(projectileExist && currentProjectile.type == type_gun){
                 System.out.println("animation");
-                shootUp1 = setup("/player/pistol_animation/player_up_attack_1", gp.tileSize, gp.tileSize * 2);
-                shootUp2 = setup("/player/pistol_animation/player_up_attack_2", gp.tileSize, gp.tileSize * 2);
-                shootDown1 = setup("/player/pistol_animation/player_front_attack_1", gp.tileSize, gp.tileSize * 2);
-                shootDown2 = setup("/player/pistol_animation/player_front_attack_2", gp.tileSize, gp.tileSize * 2);
-                shootLeft1 = setup("/player/pistol_animation/player_left_attack_1", gp.tileSize * 2, gp.tileSize);
-                shootLeft2 = setup("/player/pistol_animation/player_left_attack_2", gp.tileSize * 2, gp.tileSize);
-                shootRight1 = setup("/player/pistol_animation/player_right_attack_1", gp.tileSize * 2, gp.tileSize);
-                shootRight2 = setup("/player/pistol_animation/player_right_attack_2", gp.tileSize * 2, gp.tileSize);
+                shootUp1 = setup("/Assets/player/pistol_animation/player_up_attack_1", gp.tileSize, gp.tileSize * 2);
+                shootUp2 = setup("/Assets/player/pistol_animation/player_up_attack_2", gp.tileSize, gp.tileSize * 2);
+                shootDown1 = setup("/Assets/player/pistol_animation/player_front_attack_1", gp.tileSize, gp.tileSize * 2);
+                shootDown2 = setup("/Assets/player/pistol_animation/player_front_attack_2", gp.tileSize, gp.tileSize * 2);
+                shootLeft1 = setup("/Assets/player/pistol_animation/player_left_attack_1", gp.tileSize * 2, gp.tileSize);
+                shootLeft2 = setup("/Assets/player/pistol_animation/player_left_attack_2", gp.tileSize * 2, gp.tileSize);
+                shootRight1 = setup("/Assets/player/pistol_animation/player_right_attack_1", gp.tileSize * 2, gp.tileSize);
+                shootRight2 = setup("/Assets/player/pistol_animation/player_right_attack_2", gp.tileSize * 2, gp.tileSize);
             }
     }
     public void update(){
@@ -303,6 +303,9 @@ public class Player extends Entity{
             //CHECK ENEMY COLLISION
             int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
             contactMonster(monsterIndex);
+
+            //CHECK INTERACTIVE TILE COLLISION
+            int iTileIndex = gp.cChecker.checkEntity(this, gp.iTile);
 
             //CHECK EVENT
             //System.out.println("dmaksmdsak");
@@ -518,6 +521,9 @@ public class Player extends Entity{
             int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
             damageMonster(monsterIndex, attack);
 
+            int iTileIndex = gp.cChecker.checkEntity(this, gp.iTile);
+            damageInteractiveTile(iTileIndex);
+
             //AFTER CHECKING THE ENTITY COLLISION WE RESET THE CURRENT X AND Y AND
             //THE SOLID AREA WIDTH AND HEIGHT
             worldX = currentWorldX;
@@ -576,6 +582,20 @@ public class Player extends Entity{
 
                 }
 
+            }
+
+        }
+    }
+    public void damageInteractiveTile(int i){
+        if(i != 999 && gp.iTile[i].destructible == true &&
+                gp.iTile[i].isCorrectItem(this) == true && gp.iTile[i].invincible == false){
+
+            gp.iTile[i].PlaySE();
+            gp.iTile[i].life --;
+            gp.iTile[i].invincible = true;
+
+            if (gp.iTile[i].life == 0){
+                gp.iTile[i] = gp.iTile[i].getDestroyedForm();
             }
 
         }

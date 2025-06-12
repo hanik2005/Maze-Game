@@ -23,6 +23,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import tile.TileManager;
+import tile_interactive.InteractiveTile;
 
 /**
  *
@@ -37,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
     public final int originalTileSize = 16; // 16x16 
     public final int scale = 3; // 16 times 3 now it looks like 48 by 48
     
-    public final int tileSize = originalTileSize * scale; // 48x48 means scale and more clear the tiles and characters
+    public final int tileSize = originalTileSize * scale; // 48x48 means scale and more clear the Assets.tiles and characters
     public final int maxScreenCol = 20;
     public final int maxScreenRow = 12;
     public final int screenWidth = tileSize * maxScreenCol; //960 pixels
@@ -79,6 +80,7 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
     public Player player = new Player(this, keyH, ui);
     public Entity npc[] = new Entity[11];
     public Entity monster[] = new Entity[20];
+    public InteractiveTile iTile[] = new InteractiveTile[50];
     public Entity obj[] = new Entity[100];
     public Entity entity = new Entity(this);
     ArrayList<Entity> entityList = new ArrayList<>();
@@ -147,6 +149,7 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
                 aSetter.setObject_1();
                 aSetter.setNpc();
                 aSetter.setEnemy();
+                aSetter.setInteractiveTile();
                 eManagerActive = false;
                 environmentState = fogState;
                 break;
@@ -255,6 +258,12 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
               }
 
           }
+        //UPDATES DESTRUCTIBLE OBJECTS
+        for(int i = 0; i < iTile.length; i++){
+            if(iTile[i] != null){
+                iTile[i].update();
+            }
+        }
 
 
 
@@ -288,6 +297,12 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
         
         //TILES
         tileM.draw(g2);
+
+        for (int i = 0; i < iTile.length; i++){
+            if (iTile[i] != null){
+                iTile[i].draw(g2);
+            }
+        }
         
         
         //ADD ENTITIES TO THE LIST OR WHAT WE CALL ARRAYLIST

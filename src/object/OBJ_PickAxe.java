@@ -10,7 +10,7 @@ public class OBJ_PickAxe extends Entity {
         super(gp);
         type = type_pickaxe;
         name = "PickAxe";
-        down1 = setup("/objects/pickaxe", gp.tileSize, gp.tileSize);
+        down1 = setup("/Assets/objects/pickaxe", gp.tileSize, gp.tileSize);
         attackValue = 1;
         attackArea.width = 30;
         attackArea.height = 30;

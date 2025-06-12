@@ -6,8 +6,6 @@
 package object;
 
 import entity.Entity;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import main.GamePanel;
 
 /**
@@ -20,7 +18,7 @@ public class OBJ_Traps extends Entity {
     public OBJ_Traps(GamePanel gp){
         super(gp);
         name = "Traps";
-        down1 = setup("/objects/Traps", gp.tileSize, gp.tileSize);
+        down1 = setup("/Assets/objects/Traps", gp.tileSize, gp.tileSize);
     
     }
 }

@@ -13,10 +13,10 @@ public class OBJ_Ammo extends Entity {
         type = type_pickUpOnly;
         value = 4;
         name = "Ammo";
-        down1 = setup("/objects/ammo_kit", gp.tileSize,
+        down1 = setup("/Assets/objects/ammo_kit", gp.tileSize,
                 gp.tileSize); // AMMO KIT
-        image = setup("/objects/full_bullet", gp.tileSize, gp.tileSize);
-        image2 = setup("/objects/blank_bullet", gp.tileSize, gp.tileSize);
+        image = setup("/Assets/objects/full_bullet", gp.tileSize, gp.tileSize);
+        image2 = setup("/Assets/objects/blank_bullet", gp.tileSize, gp.tileSize);
 
     }
     public void use(Entity entity){

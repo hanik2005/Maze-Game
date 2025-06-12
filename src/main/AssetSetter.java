@@ -4,6 +4,7 @@ package main;
 import entity.NPC_Slime;
 import monster.MON_Robot;
 import object.*;
+import tile_interactive.IT_StoneBrick;
 
 
 public class AssetSetter {
@@ -20,7 +21,7 @@ public class AssetSetter {
         gp.obj[0].worldX = 49 * gp.tileSize;
         gp.obj[0].worldY = 87 * gp.tileSize;//
         
-        gp.obj[1] = new OBJ_Heart(gp);
+        gp.obj[1] = new OBJ_PickAxe(gp);
         gp.obj[1].worldX = 54 * gp.tileSize;
         gp.obj[1].worldY = 87 * gp.tileSize;//
         
@@ -28,9 +29,9 @@ public class AssetSetter {
         gp.obj[2].worldX = 54 * gp.tileSize;
         gp.obj[2].worldY = 83 * gp.tileSize;//
         
-        gp.obj[3] = new OBJ_Mana(gp);
-        gp.obj[3].worldX = 49 * gp.tileSize;
-        gp.obj[3].worldY = 81 * gp.tileSize;//
+//        gp.obj[3] = new OBJ_Mana(gp);
+//        gp.obj[3].worldX = 49 * gp.tileSize;
+//        gp.obj[3].worldY = 81 * gp.tileSize;//
 
 
         
@@ -80,6 +81,9 @@ public class AssetSetter {
         
     
     
+    }
+    public void setInteractiveTile(){
+        gp.iTile[0] = new IT_StoneBrick(gp, 49, 81);
     }
     
     

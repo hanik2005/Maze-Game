@@ -39,7 +39,7 @@ public class CollisionChecker {
                                                                                // the purpose of tileNum2 checking if the rectangle detects to the right
                                                                                // and tile num 1 represent checking if the rectangle detects to the left
                   tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
-                  if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true){ // it means if they check that this tiles collision
+                  if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true){ // it means if they check that this Assets.tiles collision
                                                                                                               // is true right or left entity.collisionOn = true
                       entity.collisionOn = true;
                       

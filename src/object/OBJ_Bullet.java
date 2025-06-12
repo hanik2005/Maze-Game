@@ -21,14 +21,14 @@ public class OBJ_Bullet extends Projectile {
 
     }
     public void getImage(){
-        up1 = setup("/projectiles/Bullets/bullet_up_1", gp.tileSize, gp.tileSize);
-        up2 = setup("/projectiles/Bullets/bullet_up_2", gp.tileSize, gp.tileSize);
-        down1 = setup("/projectiles/Bullets/bullet_down_1", gp.tileSize, gp.tileSize);
-        down2 = setup("/projectiles/Bullets/bullet_down_2", gp.tileSize, gp.tileSize);
-        left1 = setup("/projectiles/Bullets/bullet_left_1", gp.tileSize, gp.tileSize);
-        left2 = setup("/projectiles/Bullets/bullet_left_2", gp.tileSize, gp.tileSize);
-        right1 = setup("/projectiles/Bullets/bullet_right_1", gp.tileSize, gp.tileSize);
-        right2 = setup("/projectiles/Bullets/bullet_right_2", gp.tileSize, gp.tileSize);
+        up1 = setup("/Assets/projectiles/Bullets/bullet_up_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/Assets/projectiles/Bullets/bullet_up_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/Assets/projectiles/Bullets/bullet_down_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/Assets/projectiles/Bullets/bullet_down_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/Assets/projectiles/Bullets/bullet_left_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/Assets/projectiles/Bullets/bullet_left_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/Assets/projectiles/Bullets/bullet_right_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/Assets/projectiles/Bullets/bullet_right_2", gp.tileSize, gp.tileSize);
     }
     public boolean haveResource(Entity user){
         boolean haveResource = false;

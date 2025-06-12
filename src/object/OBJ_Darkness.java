@@ -5,8 +5,6 @@
 package object;
 
 import entity.Entity;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import main.GamePanel;
 
 /**
@@ -18,7 +16,7 @@ public class OBJ_Darkness extends Entity {
     public OBJ_Darkness(GamePanel gp){
         super(gp);
         name = "Sight";
-        down1 = setup("/objects/Blindness", gp.tileSize, gp.tileSize);
+        down1 = setup("/Assets/objects/Blindness", gp.tileSize, gp.tileSize);
         
     
     }

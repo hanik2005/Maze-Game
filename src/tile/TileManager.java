@@ -32,7 +32,7 @@ public class TileManager {
         this.gp = gp;
         
         //READ THE DATA FILE
-        InputStream is = getClass().getResourceAsStream("/maps/originalupdated.txt");
+        InputStream is = getClass().getResourceAsStream("/Assets/maps/originalupdated.txt");
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         
         //GETTING TILE NAME AND COLLISION IN THE DATA FILE
@@ -51,7 +51,7 @@ public class TileManager {
         tile = new Tile[fileNames.size()];
         getTileImage();
         
-        is = getClass().getResourceAsStream("/maps/maps.txt");
+        is = getClass().getResourceAsStream("/Assets/maps/maps.txt");
         br = new BufferedReader(new InputStreamReader(is));
         
         try{
@@ -77,31 +77,31 @@ public class TileManager {
     }
     public void checkWhatMap(){
         if(gp.LevelState == gp.Levels_1){
-            loadMap("/maps/maps.txt");
+            loadMap("/Assets/maps/maps.txt");
             
         }
         if(gp.LevelState == gp.Levels_2){
-            loadMap("/maps/updated_map_level_2.txt");
+            loadMap("/Assets/maps/updated_map_level_2.txt");
             
         }
         if(gp.LevelState == gp.Levels_3){
-            loadMap("/maps/maps.txt");
+            loadMap("/Assets/maps/maps.txt");
             
         }
         if(gp.LevelState == gp.Levels_4){
-            loadMap("/maps/first_example.txt");
+            loadMap("/Assets/maps/first_example.txt");
            
         }
         if(gp.LevelState == gp.Levels_5){
-            loadMap("/maps/maps.txt");
+            loadMap("/Assets/maps/maps.txt");
             
         }
         if(gp.LevelState == gp.Levels_6){
-            loadMap("/maps/first_example.txt");
+            loadMap("/Assets/maps/first_example.txt");
            
         }
         if(gp.LevelState == gp.tutorial_level){
-            loadMap("/maps/maps.txt");
+            loadMap("/Assets/maps/maps.txt");
             System.out.println("Debugging");
             
         }
@@ -209,7 +209,7 @@ public class TileManager {
          try{
             
              // Debug: Check if the image file exists
-        String imagePath = "/tiles/" + imageName;
+        String imagePath = "/Assets/tiles/" + imageName;
         InputStream is = getClass().getResourceAsStream(imagePath);
         if (is == null) {
             System.out.println("Image not found: " + imagePath);  // Debug statement
@@ -220,7 +220,7 @@ public class TileManager {
         tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
         tile[index].collision = collision;
         
-        // Optional: Define the solid area for specific tiles if needed
+        // Optional: Define the solid area for specific Assets.tiles if needed
         if (collision) {
             tile[index].solidArea = new Rectangle(0, 0, gp.tileSize, gp.tileSize);
         }
@@ -289,7 +289,7 @@ public class TileManager {
                 worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
             g2.drawImage(tile[tileNum].image, screenX, screenY, null);
             
-             //See the colision area of the tiles "DEBUGING ONLY"
+             //See the colision area of the Assets.tiles "DEBUGING ONLY"
                if (tile[tileNum].collision) {
                 g2.setColor(Color.red);
                 g2.drawRect(screenX, screenY, gp.tileSize, gp.tileSize);

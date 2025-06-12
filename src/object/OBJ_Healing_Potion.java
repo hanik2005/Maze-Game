@@ -12,7 +12,7 @@ public class OBJ_Healing_Potion extends Entity {
        type = type_consumable;
        name = "healing_potion";
        value = 5;
-       down1 = setup("/objects/healing_potion", gp.tileSize, gp.tileSize);
+       down1 = setup("/Assets/objects/healing_potion", gp.tileSize, gp.tileSize);
        description = "[" + name + "]\n heals you when you \nare in Journey.";
     }
     public void use(Entity entity){

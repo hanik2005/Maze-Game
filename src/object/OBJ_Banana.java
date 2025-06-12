@@ -5,8 +5,6 @@
 package object;
 
 import entity.Entity;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import main.GamePanel;
 
 /**
@@ -20,7 +18,7 @@ public class OBJ_Banana extends Entity{
          
         name = "Banana";
         
-        down1 = setup("/objects/banana", gp.tileSize, gp.tileSize);
+        down1 = setup("/Assets/objects/banana", gp.tileSize, gp.tileSize);
         
        
     

@@ -6,8 +6,6 @@
 package object;
 
 import entity.Entity;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import main.GamePanel;
 
 /**
@@ -19,7 +17,7 @@ public class OBJ_Brightness extends Entity {
     public OBJ_Brightness(GamePanel gp){
         super(gp);
         name = "Brightness";
-        down1 = setup("/objects/Brightness", gp.tileSize, gp.tileSize);
+        down1 = setup("/Assets/objects/Brightness", gp.tileSize, gp.tileSize);
        
     
     }
