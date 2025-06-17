@@ -234,70 +234,59 @@ public class KeyHandler implements KeyListener{ // KeyListener is the listnener 
          if (code == KeyEvent.VK_ESCAPE){
                 gp.gameState = gp.playState;
             }
+         if (code == KeyEvent.VK_ENTER){
+             enterPressed = true;
+         }
+         int maxCommandNum = 0;
+         switch (gp.ui.subState){
+             case 0: maxCommandNum  = 5;break;
+             case 3: maxCommandNum = 1;break;
+         }
+
+
             if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
-                if (gp.ui.commandNum < 0) {
-                    gp.ui.commandNum = 4;
+                gp.PlaySE(9);
+                if (gp.ui.commandNum < 0){
+                    gp.ui.commandNum = maxCommandNum;
                 }
             } 
             if (code == KeyEvent.VK_S) {
                 gp.ui.commandNum++;
-                if (gp.ui.commandNum > 4) {
+                gp.PlaySE(9);
+                if (gp.ui.commandNum > maxCommandNum){
                     gp.ui.commandNum = 0;
                 }
             }
             
             if(code == KeyEvent.VK_A){
-                
-                if(gp.ui.commandNum == 1 && gp.music.volumeScale > 0){
-                    gp.music.volumeScale --;
-                    gp.music.checkVolume();
+                if (gp.ui.subState == 0){
+                    if(gp.ui.commandNum == 1 && gp.music.volumeScale > 0){
+                        gp.music.volumeScale --;
+                        gp.music.checkVolume();
+                     }
+
+                    if(gp.ui.commandNum == 2 && gp.se.volumeScale > 0){
+                        gp.se.volumeScale --;
+                    }
                  }
-                
-                
-                if(gp.ui.commandNum == 2 && gp.se.volumeScale > 0){
-                    gp.se.volumeScale --;
-                }
-                 
             }
             if(code == KeyEvent.VK_D){
-                 
-                if(gp.ui.commandNum == 1 && gp.music.volumeScale < 5){
-                    gp.music.volumeScale ++;
-                    gp.music.checkVolume();
+
+                if (gp.ui.subState == 0) {
+
+                    if (gp.ui.commandNum == 1 && gp.music.volumeScale < 5) {
+                        gp.music.volumeScale++;
+                        gp.music.checkVolume();
+                    }
+
+
+                    if (gp.ui.commandNum == 2 && gp.se.volumeScale < 5) {
+                        gp.se.volumeScale++;
+                    }
                 }
-                 
-                 
-                 if(gp.ui.commandNum == 2 && gp.se.volumeScale < 5){
-                    gp.se.volumeScale ++;
-                }
-                  
             }
-            if(code == KeyEvent.VK_ENTER){
-                if(gp.ui.commandNum == 0){
-                    gp.gameState = gp.playState;
-                
-                }
-            
-                
-                if(gp.ui.commandNum == 1){
-                
-                }
-                if(gp.ui.commandNum == 2){
-    
-                
-                }
-                if(gp.ui.commandNum == 3){
-                     resetTitleState();
-                
-                }
-                if(gp.ui.commandNum == 4){
-                    int i = 0;
-                    System.exit(i);
-                
-                }
-            
-            }
+
      
      }
      public void playerStatusState(int code){

@@ -11,6 +11,8 @@ import javax.swing.JFrame;
  * @author kring
  */
 public class Main {
+
+    public static JFrame window;
     
     public static void main(String[] args){
         
@@ -18,10 +20,11 @@ public class Main {
     }
     public static void startGame(){
         
-        JFrame window = new JFrame();
+        window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // to properly close the program
         window.setResizable(false); // cannot resize the window
         window.setTitle("Maze Game"); // set title in window
+        //window.setUndecorated(true);
         
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel); // add the gamepanel as a Jpanel
@@ -32,6 +35,7 @@ public class Main {
         window.setVisible(true); // we can see the window
         
         gamePanel.setupGame();
+
         
         
         gamePanel.startGameThread();
