@@ -84,6 +84,7 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
     public Entity obj[] = new Entity[100];
     public Entity entity = new Entity(this);
     ArrayList<Entity> entityList = new ArrayList<>();
+    public ArrayList<Entity> particleList = new ArrayList<>();
     public ArrayList<Entity> projectileList = new ArrayList<>();
     
     
@@ -258,6 +259,19 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
               }
 
           }
+
+          //UPDATE Particles
+          for(int i = 0; i < particleList.size(); i++){
+              if(particleList.get(i) != null){
+                  if(particleList.get(i).alive == true){
+                      particleList.get(i).update();
+                  }
+                  if(particleList.get(i).alive == false){
+                      particleList.remove(i);
+                  }
+              }
+
+          }
         //UPDATES DESTRUCTIBLE OBJECTS
         for(int i = 0; i < iTile.length; i++){
             if(iTile[i] != null){
@@ -334,6 +348,14 @@ public class GamePanel extends JPanel implements Runnable{ // inherits jPanel an
             for(int i = 0; i < projectileList.size(); i++){
                 if(projectileList.get(i) != null){
                     entityList.add(projectileList.get(i));
+                }
+            }
+
+        //PARTICLES
+
+            for(int i = 0; i < particleList.size(); i++){
+                if(particleList.get(i) != null){
+                    entityList.add(particleList.get(i));
                 }
             }
 
